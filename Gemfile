@@ -34,9 +34,13 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 gem "rubocop-rails"
+gem 'config'
+gem 'dotenv-rails'
+gem 'rollbar'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.6'
+  gem 'rspec-its'
   gem 'pry-rails'
   gem 'shoulda-matchers', '~> 3.1'
   gem 'factory_bot_rails'
