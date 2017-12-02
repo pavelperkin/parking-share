@@ -1,0 +1,17 @@
+language: ruby
+sudo: required
+dist: precise
+group: edge
+rvm:
+  - 2.4.2
+script:
+  - "gem install bundler"
+  - "bundle install"
+  - "bundle exec rake db:create"
+  - "bundle exec rake db:migrate RAILS_ENV=test"
+  - "bundle exec rake db:test:prepare"
+  - "bin/rspec"
+cache:
+  bundler: true
+  apt: true
+install: gem install rails
