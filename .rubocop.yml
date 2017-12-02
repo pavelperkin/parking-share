@@ -58,7 +58,7 @@ Metrics/MethodLength:
   Enabled: true
 
 Style/FrozenStringLiteralComment:
-  Enabled: true
+  Enabled: false
 
 # By default, the rails cops are not run. Override in project or home
 # directory .rubocop.yml files, or by giving the -R/--rails option.
