@@ -3,7 +3,7 @@ sudo: required
 dist: precise
 group: edge
 rvm:
-  - 2.2.4
+  - 2.4.2
 script:
   - "gem install bundler"
   - "bundle install"
