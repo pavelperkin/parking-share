@@ -33,9 +33,23 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem "rubocop-rails"
+gem 'config'
+gem 'dotenv-rails'
+gem 'rollbar'
+
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rspec-rails', '~> 3.6'
+  gem 'rspec-its'
+  gem 'pry-rails'
+  gem 'shoulda-matchers', '~> 3.1'
+  gem 'factory_bot_rails'
+end
+
+group :test do
+  gem 'database_cleaner', '~> 1.6.2'
+  gem 'simplecov', require: false
+  gem 'test-prof'
 end
 
 group :development do

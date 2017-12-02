@@ -1,0 +1,10 @@
+language: ruby
+sudo: required
+dist: precise
+group: edge
+rvm:
+  - 2.2.4
+cache:
+  bundler: true
+  apt: true
+install: gem install rails
