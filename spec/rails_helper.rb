@@ -8,7 +8,7 @@ require 'rspec/rails'
 require "test_prof/recipes/rspec/let_it_be"
 require "test_prof/recipes/rspec/factory_default"
 require 'simplecov'
-SimpleCov.start 'rails'
+SimpleCov.start
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -58,8 +58,4 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
-
-  config.generators do |g|
-    g.factory_bot dir: 'custom/dir/for/factories'
-  end
 end
