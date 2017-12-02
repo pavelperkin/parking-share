@@ -5,9 +5,12 @@ group: edge
 rvm:
   - 2.2.4
 script:
+  - "gem install bundler"
+  - "bundle install"
   - "bundle exec rake db:create"
   - "bundle exec rake db:migrate RAILS_ENV=test"
   - "bundle exec rake db:test:prepare"
+  - "bin/rspec spec"
 cache:
   bundler: true
   apt: true
