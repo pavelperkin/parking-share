@@ -6,7 +6,7 @@ FactoryBot.define do
   end
 
   factory :admin, class: User do
-    email 'user@lohika.com'
+    email 'admin@lohika.com'
     password 'secret5678'
     admin true
   end
