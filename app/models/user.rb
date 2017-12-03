@@ -6,4 +6,6 @@ class User < ApplicationRecord
 
   validates :email, format: { with: Devise.email_regexp, message: 'Please enter a valid email' }
   validates :email, format: { with: /[a-zA-Z]+@lohika.com\z/, message: 'Email should be with lohika.com domain' }
+
+  scope :by_roles, -> { order(admin: :desc) }
 end
