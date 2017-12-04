@@ -1,0 +1,16 @@
+.row
+  .col-sm
+    %table.table.table-striped.table-bordered.table-hover
+      %thead.thead-dark
+        %tr
+          %th Email
+          %th admin?
+          %th Created at
+      %tbody
+        - @users.each do |user|
+          %tr
+            %td= user.email
+            %td= user.admin?
+            %td= l user.created_at, format: :short
+  .col-sm
+    One of three columns
