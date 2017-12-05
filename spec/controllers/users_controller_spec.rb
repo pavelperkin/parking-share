@@ -123,7 +123,7 @@ RSpec.describe UsersController, type: :controller do
       context 'with invalid params' do
         it "redirects to index page with flash" do
           post :create, params: { user: {email: "#{Faker::Internet.user_name}@notlohika.com", admin: false }}
-          expect(response).to have_http_status(:success)
+          expect(response).to redirect_to(users_path)
           expect(controller).to set_flash[:alert]
         end
       end
