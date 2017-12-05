@@ -1,0 +1,12 @@
+.card
+  .card-body
+    = form_for user do |f|
+      .form-row
+        .col-md
+          = f.label :email
+          = f.email_field :email, class: 'form-control', placeholder: 'user@lohika.com'
+        .col-sm
+          %br
+          = f.submit 'Save', class: 'btn btn-primary'
+
+%br
