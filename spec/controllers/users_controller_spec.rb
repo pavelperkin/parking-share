@@ -9,7 +9,7 @@ RSpec.describe UsersController, type: :controller do
 
     describe "POST #create" do
       it "redirects to sign_in page" do
-        post :create, params: { user: {email: 'user@lohika.com', admin: false }}
+        post :create, params: { user: { email: 'user@lohika.com', admin: false } }
         expect(response).to redirect_to(new_user_session_path)
       end
     end
@@ -17,7 +17,7 @@ RSpec.describe UsersController, type: :controller do
     describe "GET #edit" do
       let!(:new_user) { create :user, email: "#{Faker::Internet.user_name}@lohika.com", admin: false }
       it "redirects to sign_in page" do
-        get :edit, params: {id: new_user.id}
+        get :edit, params: { id: new_user.id }
         expect(response).to redirect_to(new_user_session_path)
       end
     end
@@ -25,7 +25,7 @@ RSpec.describe UsersController, type: :controller do
     describe "GET #update" do
       let!(:new_user) { create :user, email: "#{Faker::Internet.user_name}@lohika.com", admin: false }
       it "redirects to sign_in page" do
-        patch :update, params: {id: new_user.id, user: { admin: true }}
+        patch :update, params: { id: new_user.id, user: { admin: true } }
         expect(response).to redirect_to(new_user_session_path)
       end
     end
@@ -54,7 +54,7 @@ RSpec.describe UsersController, type: :controller do
 
     describe "POST #create" do
       it "redirects to root page" do
-        post :create, params: { user: {email: "#{Faker::Internet.user_name}@lohika.com", admin: false }}
+        post :create, params: { user: { email: "#{Faker::Internet.user_name}@lohika.com", admin: false } }
         expect(response).to redirect_to(root_url)
       end
     end
@@ -62,8 +62,7 @@ RSpec.describe UsersController, type: :controller do
     describe "GET #edit" do
       let!(:new_user) { create :user, email: "#{Faker::Internet.user_name}@lohika.com", admin: false }
       it "redirects to root page" do
-
-        get :edit, params: {id: new_user.id}
+        get :edit, params: { id: new_user.id }
         expect(response).to redirect_to(root_url)
       end
     end
@@ -71,7 +70,7 @@ RSpec.describe UsersController, type: :controller do
     describe "PATCH #update" do
       let!(:new_user) { create :user, email: "#{Faker::Internet.user_name}@lohika.com", admin: false }
       it "redirects to root page" do
-        patch :update, params: {id: new_user.id, user: { admin: true }}
+        patch :update, params: { id: new_user.id, user: { admin: true } }
         expect(response).to redirect_to(root_url)
       end
     end
@@ -102,11 +101,11 @@ RSpec.describe UsersController, type: :controller do
     describe "POST #create" do
       context 'with valid params' do
         subject do
-          post :create, params: { user: {email: "#{Faker::Internet.user_name}@lohika.com", admin: false }}
+          post :create, params: { user: { email: "#{Faker::Internet.user_name}@lohika.com", admin: false } }
         end
 
         it 'creates new user' do
-          expect{subject}.to change{User.count}.by(1)
+          expect { subject }.to change { User.count }.by(1)
         end
 
         it 'redirects to users_path' do
@@ -122,7 +121,7 @@ RSpec.describe UsersController, type: :controller do
 
       context 'with invalid params' do
         it "redirects to index page with flash" do
-          post :create, params: { user: {email: "#{Faker::Internet.user_name}@notlohika.com", admin: false }}
+          post :create, params: { user: { email: "#{Faker::Internet.user_name}@notlohika.com", admin: false } }
           expect(response).to redirect_to(users_path)
           expect(controller).to set_flash[:alert]
         end
@@ -142,7 +141,7 @@ RSpec.describe UsersController, type: :controller do
 
       context 'with valid params' do
         subject do
-          patch :update, params: {id: new_user.id, user: { admin: true }}
+          patch :update, params: { id: new_user.id, user: { admin: true } }
         end
 
         it 'updates user' do
@@ -163,7 +162,7 @@ RSpec.describe UsersController, type: :controller do
 
       context 'with invalid params' do
         subject do
-          patch :update, params: {id: new_user.id, user: { email: 'invalid-email' }}
+          patch :update, params: { id: new_user.id, user: { email: 'invalid-email' } }
         end
 
         it 'redirects to edit path' do
@@ -187,7 +186,7 @@ RSpec.describe UsersController, type: :controller do
       end
 
       it 'deletes user' do
-        expect{subject}.to change{User.count}.by(-1)
+        expect { subject }.to change { User.count }.by(-1)
       end
     end
   end

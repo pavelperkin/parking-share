@@ -18,7 +18,7 @@ RSpec.describe User, type: :model do
 
       subject { described_class.by_roles.pluck(:email) }
 
-      it { is_expected.to eq ['admin@lohika.com', 'userfirst@lohika.com', 'usersecond@lohika.com', 'userthird@lohika.com']}
+      it { is_expected.to eq ['admin@lohika.com', 'userfirst@lohika.com', 'usersecond@lohika.com', 'userthird@lohika.com'] }
     end
   end
 
