@@ -1,16 +1,27 @@
 .row
-  .col-sm
-    %table.table.table-striped.table-bordered.table-hover
-      %thead.thead-dark
-        %tr
-          %th Email
-          %th admin?
-          %th Created at
-      %tbody
-        - @users.each do |user|
-          %tr
-            %td= user.email
-            %td= user.admin?
-            %td= l user.created_at, format: :short
-  .col-sm
-    One of three columns
+  .col-md
+    - if can? :create, :users
+      = render 'form', user: User.new
+    .card
+      .card-body
+        %table.table.table-striped.table-bordered.table-hover
+          %thead.thead-dark
+            %tr
+              %th Email
+              %th admin?
+              %th Created at
+              - if can? :update, :users
+                %th Edit
+              - if can? :delete, :users
+                %th Delete
+          %tbody
+            - @users.each do |user|
+              %tr
+                %td= user.email
+                %td= user.admin?
+                %td= l user.created_at, format: :short
+                - if can? :update, user
+                  %td= link_to 'Edit', edit_user_path(user)
+                - if can? :delete, :users
+                  %td= link_to 'Delete', user_path(user), method: :delete
+
