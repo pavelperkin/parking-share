@@ -8,4 +8,6 @@ class User < ApplicationRecord
   validates :email, format: { with: /[a-zA-Z]+@lohika.com\z/, message: 'Email should be with lohika.com domain' }
 
   scope :by_roles, -> { order(admin: :desc) }
+
+  has_one :profile
 end

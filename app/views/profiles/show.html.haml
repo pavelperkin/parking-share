@@ -1,0 +1,11 @@
+%p#notice= notice
+
+%h2= full_name(@profile)
+%span= @profile.phone_number
+%br
+%b= @profile.email
+%br
+
+= link_to 'Edit', edit_profile_path
+\|
+= link_to 'Back', root_path

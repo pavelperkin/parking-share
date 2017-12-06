@@ -5,6 +5,8 @@
       -if can? :read, :users
         %li.nav-item
           = link_to 'Users', users_path, class: 'nav-link'
+        %li.nav-item
+          = link_to 'Profile', profile_path, class: 'nav-link'
       %li.nav-item
       - if user_signed_in?
         = link_to 'Sign out', destroy_user_session_path, class: 'nav-link'
