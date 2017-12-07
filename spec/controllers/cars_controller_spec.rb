@@ -58,7 +58,7 @@ RSpec.describe CarsController, type: :controller do
       describe 'POST #create' do
         context 'for self profile' do
           context 'with valid params' do
-            subject { post :create, params: { car: attributes_for(:car, profile_id: user.profile.id ) } }
+            subject { post :create, params: { car: attributes_for(:car, profile_id: user.profile.id) } }
 
             it 'creates new Car' do
               expect { subject }.to change { Car.count }.by(1)
@@ -99,7 +99,7 @@ RSpec.describe CarsController, type: :controller do
 
         context 'for another profile' do
           let(:another_user) { create :user, email: "#{Faker::Internet.user_name}@lohika.com" }
-          let!(:another_profile) { create :profile, user: another_user, phone_number: Faker::PhoneNumber.cell_phone}
+          let!(:another_profile) { create :profile, user: another_user, phone_number: Faker::PhoneNumber.cell_phone }
           context 'with valid params' do
             subject { post :create, params: { car: attributes_for(:car, profile_id: another_profile.id) } }
 
@@ -139,7 +139,7 @@ RSpec.describe CarsController, type: :controller do
       describe 'DELETE #destroy' do
         context 'from self profile' do
           let!(:car) { create :car, profile_id: user.profile.id }
-          subject { delete :destroy, params: { id: car.id }}
+          subject { delete :destroy, params: { id: car.id } }
 
           it 'deletes car' do
             expect { subject }.to change { Car.count }.by(-1)
@@ -157,10 +157,10 @@ RSpec.describe CarsController, type: :controller do
 
         context 'from another profile' do
           let(:another_user) { create :user, email: "#{Faker::Internet.user_name}@lohika.com" }
-          let!(:another_profile) { create :profile, user: another_user, phone_number: Faker::PhoneNumber.cell_phone}
+          let!(:another_profile) { create :profile, user: another_user, phone_number: Faker::PhoneNumber.cell_phone }
           let!(:car) { create :car, profile_id: another_profile.id }
 
-          subject { delete :destroy, params: { id: car.id }}
+          subject { delete :destroy, params: { id: car.id } }
 
           it 'not deletes car' do
             expect { subject }.not_to change { Car.count }
@@ -213,7 +213,7 @@ RSpec.describe CarsController, type: :controller do
       describe 'POST #create' do
         context 'for self profile' do
           context 'with valid params' do
-            subject { post :create, params: { car: attributes_for(:car, profile_id: admin.profile.id ) } }
+            subject { post :create, params: { car: attributes_for(:car, profile_id: admin.profile.id) } }
 
             it 'creates new Car' do
               expect { subject }.to change { Car.count }.by(1)
@@ -254,10 +254,10 @@ RSpec.describe CarsController, type: :controller do
 
         context 'for another profile' do
           let(:another_user) { create :user, email: "#{Faker::Internet.user_name}@lohika.com" }
-          let!(:another_profile) { create :profile, user: another_user, phone_number: Faker::PhoneNumber.cell_phone}
+          let!(:another_profile) { create :profile, user: another_user, phone_number: Faker::PhoneNumber.cell_phone }
 
           context 'with valid params' do
-            subject { post :create, params: { car: attributes_for(:car, profile_id: another_user.profile.id ) } }
+            subject { post :create, params: { car: attributes_for(:car, profile_id: another_user.profile.id) } }
 
             it 'creates new Car' do
               expect { subject }.to change { Car.count }.by(1)
@@ -298,7 +298,7 @@ RSpec.describe CarsController, type: :controller do
       end
 
       describe 'DELETE #destroy' do
-        subject { delete :destroy, params: { id: car.id }}
+        subject { delete :destroy, params: { id: car.id } }
 
         context 'from self profile' do
           let!(:car) { create :car, profile_id: admin.profile.id }
@@ -319,7 +319,7 @@ RSpec.describe CarsController, type: :controller do
 
         context 'from another profile' do
           let(:another_user) { create :user, email: "#{Faker::Internet.user_name}@lohika.com" }
-          let!(:another_profile) { create :profile, user: another_user, phone_number: Faker::PhoneNumber.cell_phone}
+          let!(:another_profile) { create :profile, user: another_user, phone_number: Faker::PhoneNumber.cell_phone }
           let!(:car) { create :car, profile_id: another_profile.id }
 
           it 'deletes car' do

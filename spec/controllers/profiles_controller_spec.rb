@@ -35,7 +35,7 @@ RSpec.describe ProfilesController, type: :controller do
 
     describe "GET #show" do
       context 'profile created' do
-        let!(:profile) { create :profile, user: user}
+        let!(:profile) { create :profile, user: user }
         it "returns a success response" do
           get :show
           expect(response).to have_http_status(:success)
@@ -58,7 +58,6 @@ RSpec.describe ProfilesController, type: :controller do
     end
 
     describe 'POST #create' do
-
       context 'valid params' do
         it "redirects profile path" do
           post :create, params: { profile: attributes_for(:profile) }
