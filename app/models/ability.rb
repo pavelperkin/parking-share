@@ -6,8 +6,10 @@ class Ability
     if user.admin?
       can :manage, :all
     else
-      can :create, :profile
-      can :update, :profile
+      if user.present?
+        can :manage, Car, profile_id: user.profile.id
+        can :manage, Profile, user_id: user.id
+      end
       can :read, :all
     end
     #

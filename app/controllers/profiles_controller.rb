@@ -1,11 +1,17 @@
 class ProfilesController < ApplicationController
+  skip_before_action :force_to_fill_profile!, only: [:edit, :create]
   before_action :set_profile, only: [:show, :edit, :update]
 
-  def show; end
+  def show
+    authorize! :read, @profile
+  end
 
-  def edit; end
+  def edit
+    authorize! :manage, @profile
+  end
 
   def update
+    authorize! :update, @profile
     if @profile.update(profile_params)
       redirect_to profile_path, notice: 'Profile was successfully updated.'
     else
@@ -16,6 +22,7 @@ class ProfilesController < ApplicationController
 
   def create
     @profile = current_user.build_profile(profile_params)
+    authorize! :create, @profile
     if @profile.save
       redirect_to profile_path, notice: 'Profile was successfully created.'
     else

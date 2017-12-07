@@ -1,14 +1,27 @@
 %nav.navbar.navbar-light.navbar-expand-lg{:style => "background-color: #38b349; color: white"}
   = link_to 'Lohika', root_path, class: 'navbar-brand'
   .collapse.navbar-collapse
-    %ul.navbar-nav.mr-auto
-      -if can? :read, :users
+    - if user_signed_in?
+      %ul.navbar-nav.mr-auto
+        -if can? :read, :users
+          %li.nav-item
+            = link_to 'Users', users_path, class: 'nav-link'
         %li.nav-item
-          = link_to 'Users', users_path, class: 'nav-link'
+          - if with_full_profile?
+            = link_to 'Profile', profile_path, class: 'nav-link'
+          - else
+            -if can? :manage, :profile
+              = link_to edit_profile_path, class: 'nav-link' do
+                %span
+                  Profile
+                  %span.badge.badge-secondary
+                    !
+      %ul.text-right.navbar-nav
         %li.nav-item
-          = link_to 'Profile', profile_path, class: 'nav-link'
-      %li.nav-item
-      - if user_signed_in?
-        = link_to 'Sign out', destroy_user_session_path, class: 'nav-link'
-      - else
-        = link_to 'Sign in', new_user_session_path, class: 'nav-link'
+          %span.nav-link= current_user.email
+          %li.nav-item
+            = link_to 'Sign out', destroy_user_session_path, class: 'nav-link'
+    - else
+      %ul.navbar-nav
+        %li.nav-item
+          = link_to 'Sign in', new_user_session_path, class: 'nav-link'

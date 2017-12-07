@@ -43,6 +43,7 @@ RSpec.describe UsersController, type: :controller do
       user = create :user
       allow(controller).to receive(:authenticate_user!) { true }
       allow(controller).to receive(:current_user) { user }
+      create :profile, user: user
     end
 
     describe "GET #index" do
@@ -89,6 +90,7 @@ RSpec.describe UsersController, type: :controller do
       admin = create :admin
       allow(controller).to receive(:authenticate_user!) { true }
       allow(controller).to receive(:current_user) { admin }
+      create :profile, user: admin
     end
 
     describe "GET #index" do

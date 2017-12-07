@@ -1,10 +1,24 @@
-%p#notice= notice
+.row
+  .col-sm
+    .card
+      .card-body
+        %h4.card-title= full_name(@profile)
+        %h6.card-subtitle.mb-2.text-muted= @profile.phone_number
+        %p.card-text= @profile.email
+  .col-md
+    .card
+      .card-body
+        -if @profile.cars.any?
+          = render 'cars/list', cars: @profile.cars
+        - else
+          %p You don't have any cars yet.
+    %br
+    .text-right
+      - if can? :create, Car
+        = link_to new_car_path, class: 'btn btn-float btn-primary waves-attach waves-circle' do
+          %i.material-icons add
 
-%h2= full_name(@profile)
-%span= @profile.phone_number
-%br
-%b= @profile.email
-%br
+
 
 = link_to 'Edit', edit_profile_path
 \|

@@ -1,0 +1,18 @@
+- if @car.errors.any?
+  #error_explanation
+    %h2= "#{pluralize(@car.errors.count, "error")} prohibited this car from being saved:"
+    %ul
+      - @car.errors.full_messages.each do |message|
+        %li= message
+= form_for @car, html: {class: 'form-inline'} do |f|
+
+  = f.label :make, class: 'mr-sm-2'
+  = f.text_field :make, class: 'form-control mb-2 mr-sm-2 mb-sm-0', placeholder: 'Ford'
+
+  = f.label :model, class: 'mr-sm-2'
+  = f.text_field :model, class: 'form-control mb-2 mr-sm-2 mb-sm-0', placeholder: 'Fiesta'
+
+  = f.label :number, class: 'mr-sm-2'
+  = f.text_field :number, class: 'form-control mb-2 mr-sm-2 mb-sm-0', placeholder: 'BH0001BH'
+  .actions
+    = f.submit 'Save', class: 'btn btn-primary'
