@@ -1,0 +1,13 @@
+.card
+  .card-body
+    = form_for parking_place do |f|
+      .form-row
+        = f.hidden_field :parking_id, value: @parking.id
+        .col-md
+          = f.label :number
+          = f.number_field :number, class: 'form-control', placeholder: '42'
+        .col-sm
+          %br
+          = f.submit 'Save', class: 'btn btn-primary'
+
+%br

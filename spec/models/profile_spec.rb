@@ -9,4 +9,5 @@ RSpec.describe Profile, type: :model do
   it { is_expected.to validate_uniqueness_of(:user_id) }
   it { is_expected.to belong_to(:user).dependent(:destroy).inverse_of(:profile) }
   it { is_expected.to delegate_method(:email).to(:user) }
+  it { is_expected.to have_many(:cars) }
 end

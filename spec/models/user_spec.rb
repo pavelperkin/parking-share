@@ -8,6 +8,7 @@ RSpec.describe User, type: :model do
   it { is_expected.to allow_value('admin@lohika.com').for(:email) }
   it { is_expected.not_to allow_value('admin@example.com').for(:email) }
   it { is_expected.not_to allow_value('admin-example.com').for(:email) }
+  it { is_expected.to have_one(:profile) }
 
   describe 'scopes' do
     describe 'by_roles' do

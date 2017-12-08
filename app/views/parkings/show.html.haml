@@ -1,1 +1,9 @@
-#show
+- if can? :create, :parking_place
+  = render 'parking_places/form', parking_place: ParkingPlace.new
+%h2= @parking.name
+%ul.list-group
+  - @parking.parking_places.each do |place|
+    %li.list-group-item= place.number
+
+%br
+= link_to 'Back', parkings_path

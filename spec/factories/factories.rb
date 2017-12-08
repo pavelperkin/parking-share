@@ -30,4 +30,9 @@ FactoryBot.define do
     rank 1
     order ["asc", "desc"].sample
   end
+
+  factory :parking_place do
+    number Faker::Number.number(3)
+    parking
+  end
 end
