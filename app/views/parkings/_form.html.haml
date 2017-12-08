@@ -1,0 +1,19 @@
+- if @parking.errors.any?
+  #error_explanation
+    %h2= "#{pluralize(@parking.errors.count, "error")} prohibited this parking from being saved:"
+    %ul
+      - @parking.errors.full_messages.each do |message|
+        %li= message
+
+= form_for @parking, html: {class: 'form-inline'} do |f|
+  = f.label :name, class: 'mr-sm-2'
+  = f.text_field :name, class: 'form-control mb-2 mr-sm-2 mb-sm-0', placeholder: 'Подземная парковка'
+
+  = f.label :rank, class: 'mr-sm-2'
+  = f.number_field :rank, class: 'form-control mb-2 mr-sm-2 mb-sm-0'
+
+  = f.label :order, class: 'mr-sm-2'
+  = f.select :order, ['asc', 'desc'], {}, { class: 'form-control mb-2 mr-sm-2 mb-sm-0' }
+  .actions
+    = f.submit 'Save', class: 'btn btn-primary'
+

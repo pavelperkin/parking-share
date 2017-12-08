@@ -1,0 +1,31 @@
+%h1 Listing parkings
+
+.card
+  .card-body
+    %table.table.table-striped.table-bordered.table-hover
+      %thead.thead-dark
+        %tr
+          %th Name
+          %th Rank
+          %th Order
+          %th Show
+          -if can? :manage, :parkings
+            %th
+            %th
+
+      %tbody
+        - @parkings.each do |parking|
+          %tr
+            %td= parking.name
+            %td= parking.rank
+            %td= parking.order
+            %td= link_to 'Show', parking
+            -if can? :manage, :parkings
+              %td= link_to 'Edit', edit_parking_path(parking)
+              %td= link_to 'Destroy', parking, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+-if can? :create, :parkings
+  .text-right
+    = link_to new_parking_path, class: 'btn btn-float btn-primary waves-attach waves-circle' do
+      %i.material-icons add
