@@ -6,6 +6,9 @@
         -if can? :read, :users
           %li.nav-item
             = link_to 'Users', users_path, class: 'nav-link'
+        -if can? :read, :parkings
+          %li.nav-item
+            = link_to 'Parkings', parkings_path, class: 'nav-link'
         %li.nav-item
           - if with_full_profile?
             = link_to 'Profile', profile_path, class: 'nav-link'

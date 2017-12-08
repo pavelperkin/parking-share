@@ -24,4 +24,10 @@ FactoryBot.define do
     number Faker::StarWars.droid
     profile
   end
+
+  factory :parking do
+    name Faker::StarWars.planet
+    rank 1
+    order ["asc", "desc"].sample
+  end
 end
