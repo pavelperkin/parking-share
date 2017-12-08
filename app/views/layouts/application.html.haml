@@ -9,7 +9,7 @@
   %body
     = render 'layouts/navbar'
     .container
-      - if user_signed_in? && !current_user.profile
+      - if user_signed_in? && !with_full_profile?
         = render 'layouts/complete_profile'
       - if notice
         %p.alert= notice

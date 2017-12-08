@@ -1,0 +1,18 @@
+- cars.each do |car|
+  .row
+    .col-sm-9
+      %br
+      %dl.row
+        %dt.col-sm-6
+          %b= car.make
+          %muted= car.model
+        %dd.col-md-6.text-right
+          %i=car.number
+    - if can? :destroy, car
+      .col-sm-3
+        .text-right
+          = link_to car, class: "btn btn-float btn-danger waves-attach waves-circle", method: :delete do
+            %i.material-icons
+              delete
+
+  %hr

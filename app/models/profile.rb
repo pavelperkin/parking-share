@@ -1,5 +1,6 @@
 class Profile < ApplicationRecord
   belongs_to :user, inverse_of: :profile, dependent: :destroy
+  has_many :cars
 
   validates :first_name, presence: true
   validates :last_name, presence: true

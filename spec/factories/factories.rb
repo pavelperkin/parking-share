@@ -17,4 +17,11 @@ FactoryBot.define do
     phone_number Faker::PhoneNumber.cell_phone
     user
   end
+
+  factory :car do
+    make Faker::StarWars.vehicle
+    model Faker::StarWars.planet
+    number Faker::StarWars.droid
+    profile
+  end
 end

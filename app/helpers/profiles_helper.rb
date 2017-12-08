@@ -1,4 +1,4 @@
-module ProfileHelper
+module ProfilesHelper
   def full_name(resource)
     if resource.first_name && resource.last_name
       [resource.first_name, resource.last_name].join(' ')
