@@ -8,10 +8,12 @@ class ApplicationController < ActionController::Base
   end
 
   def current_profile
-    current_user.profile || Profile.new
+      current_user&.profile
   end
 
   def force_to_fill_profile!
-    redirect_to edit_profile_path unless current_profile.persisted?
+    if user_signed_in?
+      redirect_to edit_profile_path unless current_profile
+    end
   end
 end
