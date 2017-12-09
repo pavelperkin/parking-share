@@ -32,7 +32,8 @@ FactoryBot.define do
   end
 
   factory :parking_place do
-    number Faker::Number.number(3)
+    number Faker::Number.number(1)
     parking
+    profile_id nil
   end
 end

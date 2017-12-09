@@ -9,6 +9,17 @@ class ParkingPlacesController < ApplicationController
     end
   end
 
+  def update
+    #TODO
+    @parking_place = ParkingPlace.find(params[:id])
+    authorize! :update, @parking_place
+    if @parking_place.update(parking_place_params)
+      redirect_to @parking_place.parking, notice: 'Parking place was successfully created.'
+    else
+      redirect_to @parking_place.parking, alert: 'Errors!!!'
+    end
+  end
+
   def destroy
     @parking_place = ParkingPlace.find(params[:id])
     authorize! :destroy, @parking_place
@@ -19,6 +30,6 @@ class ParkingPlacesController < ApplicationController
   private
 
     def parking_place_params
-      params.require(:parking_place).permit(:number, :parking_id)
+      params.require(:parking_place).permit(:number, :parking_id, :profile_id)
     end
 end

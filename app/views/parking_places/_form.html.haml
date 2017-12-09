@@ -1,13 +1,14 @@
-.card
-  .card-body
-    = form_for parking_place do |f|
-      .form-row
-        = f.hidden_field :parking_id, value: @parking.id
-        .col-md
-          = f.label :number
-          = f.number_field :number, class: 'form-control', placeholder: '42'
-        .col-sm
-          %br
-          = f.submit 'Save', class: 'btn btn-primary'
+= form_for parking_place do |f|
+  .form-row
+    = f.hidden_field :parking_id, value: @parking.id
+    .col-md
+      = f.label :number
+      = f.number_field :number, class: 'form-control', placeholder: '42'
+    .col-md
+      = f.label :profile_id
+      = f.select :profile_id, Profile.all.map { |profile| [profile.email, profile.id] }, { include_blank: true }, { class: 'form-control mb-2 mr-sm-2 mb-sm-0' }
+    .col-sm
+      %br
+      = f.submit 'Save', class: 'btn btn-primary'
 
 %br
