@@ -1,30 +1,25 @@
-%nav.navbar.navbar-light.navbar-expand-lg{:style => "background-color: #38b349; color: white"}
+%nav.navbar.justify-content-between{:style => "background-color: #38b349; color: white"}
   = link_to 'Lohika', root_path, class: 'navbar-brand'
-  .collapse.navbar-collapse
-    - if user_signed_in?
-      %ul.navbar-nav.mr-auto
-        -if can? :read, :users
-          %li.nav-item
-            = link_to 'Users', users_path, class: 'nav-link'
-        -if can? :read, :parkings
-          %li.nav-item
-            = link_to 'Parkings', parkings_path, class: 'nav-link'
+  - if user_signed_in?
+    %ul.navbar-nav
+      -if can? :read, :users
         %li.nav-item
-          - if with_full_profile?
-            = link_to 'Profile', profile_path, class: 'nav-link'
-          - else
-            -if can? :manage, :profile
-              = link_to edit_profile_path, class: 'nav-link' do
-                %span
-                  Profile
-                  %span.badge.badge-secondary
-                    !
-      %ul.text-right.navbar-nav
+          = link_to 'Users', users_path, class: 'nav-link'
+      -if can? :read, :parkings
         %li.nav-item
-          %span.nav-link= current_user.email
-          %li.nav-item
-            = link_to 'Sign out', destroy_user_session_path, class: 'nav-link'
-    - else
-      %ul.navbar-nav
-        %li.nav-item
-          = link_to 'Sign in', new_user_session_path, class: 'nav-link'
+          = link_to 'Parkings', parkings_path, class: 'nav-link'
+      %li.nav-item
+        - if with_full_profile?
+          = link_to "Profile(#{current_user.email})", profile_path, class: 'nav-link'
+        - else
+          = link_to edit_profile_path, class: 'nav-link' do
+            %span
+              = "Profile(#{current_user.email})"
+              %span.badge.badge-secondary
+                !
+      %li.nav-item
+        = link_to 'Sign out', destroy_user_session_path, class: 'nav-link'
+  - else
+    %ul.navbar-nav
+      %li.nav-item
+        = link_to 'Sign in', new_user_session_path, class: 'nav-link'
