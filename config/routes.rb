@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  root to: 'home#index'
+  resources :rents
+  resources :shares
+  root to: 'shares#index'
   devise_for :users
   resources :users, only: [:index, :create, :edit, :update, :destroy]
   resource :profile, only: [:show, :edit, :update, :create]
