@@ -9,6 +9,7 @@ class Ability
       if user.present?
         can :manage, Car, profile_id: user.profile.id
         can :manage, Profile, user_id: user.id
+        can :manage, Share, profile_id: user.profile.id, is_active: true
       end
       can :read, :all
     end
