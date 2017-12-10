@@ -36,4 +36,18 @@ FactoryBot.define do
     parking
     profile_id nil
   end
+
+  factory :rent do
+    from_date Date.current
+    to_date Date.current + 10.days
+    share
+    profile
+  end
+
+  factory :share do
+    from_date Date.current
+    to_date Date.current + 10.days
+    is_active true
+    profile
+  end
 end

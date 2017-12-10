@@ -1,6 +1,8 @@
 class Profile < ApplicationRecord
   belongs_to :user, inverse_of: :profile, dependent: :destroy
   has_many :cars
+  has_many :shares
+  has_many :rents
   has_one :parking_place
 
   validates :first_name, presence: true
