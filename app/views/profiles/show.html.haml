@@ -8,16 +8,40 @@
   .col-md
     .card
       .card-body
+        %h4.card-title Your cars
         -if @profile.cars.any?
           = render 'cars/list', cars: @profile.cars
         - else
-          %p You don't have any cars yet.
+          %h6.card-subtitle.mb-2.text-muted You don't have any cars yet.
     %br
     .text-right
       - if can? :create, Car
         = link_to new_car_path, class: 'btn btn-float btn-primary waves-attach waves-circle' do
           %i.material-icons add
 
+%hr
+.row
+  .col-sm
+    .card
+      .card-body
+        %h4.card-title Your shares
+        - if @profile.shares.any?
+          = render 'shares/list', shares: @profile.shares
+        - else
+          %h6.card-subtitle.mb-2.text-muted You don't have any shares yet
+    %br
+      .text-right
+        - if can? :create, Share
+          = link_to new_share_path, class: 'btn btn-float btn-primary waves-attach waves-circle' do
+            %i.material-icons add
+  .col-sm
+    .card
+      .card-body
+        %h4.card-title Your rents
+        - if @profile.rents.any?
+          = render 'rents/list', rents: @profile.rents
+        - else
+          %h6.card-subtitle.mb-2.text-muted You don't have any rents yet
 
 
 = link_to 'Edit', edit_profile_path

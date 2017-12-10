@@ -1,0 +1,4 @@
+%ul.list-group.list-group-flush
+  - shares.each do |share|
+    %li.list-group-item{ class: ( 'text-muted' unless share.is_active? ) }
+      = "From #{l share.from_date, format: :short} to #{l share.to_date, format: :short}"

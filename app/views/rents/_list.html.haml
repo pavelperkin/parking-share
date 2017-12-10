@@ -1,0 +1,4 @@
+%ul.list-group.list-group-flush
+  - rents.each do |rent|
+    %li.list-group-item{ class: ( 'text-muted' unless rent.is_active? ) }
+      = "##{rent.share.profile.parking_place.number} - From #{l rent.from_date, format: :short} to #{l rent.to_date, format: :short}"
